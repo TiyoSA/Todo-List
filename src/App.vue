@@ -4,6 +4,7 @@
 
     <form @submit.prevent="addTodo" class="input-section">
       <input v-model="newTodo" placeholder="Tambah kegiatan..." />
+      <input type="time" v-model="newTime" class="time-input" />
       <button type="submit">Tambah</button>
     </form>
 
@@ -21,6 +22,7 @@
         </div>
         <div class="col-task">
           <span>{{ todo.text }}</span>
+          <input type="time" v-model="todo.time" class="time-input" />
         </div>
         <div class="col-action">
           <button @click="removeTodo(index)">Batal</button>
@@ -34,13 +36,15 @@
 import { ref, computed } from 'vue'
 
 const newTodo = ref('')
+const newTime = ref('')
 const todos = ref([])
 const filterIncomplete = ref(false)
 
 function addTodo() {
-  if (newTodo.value.trim() !== '') {
-    todos.value.push({ text: newTodo.value, done: false })
+  if (newTodo.value.trim() !== '' && newTime.value !== '') {
+    todos.value.push({ text: newTodo.value, time: newTime.value, done: false })
     newTodo.value = ''
+    newTime.value = ''
   }
 }
 
@@ -85,12 +89,21 @@ h1 {
 }
 
 input[type="text"] {
-  flex: 1;
+  flex: 2;
   padding: 10px;
   background-color: #2c2c2c;
   border: 1px solid #444;
   border-radius: 8px;
   color: white;
+}
+
+.time-input {
+  flex: 1;
+  padding: 10px;
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #f1f1f1;
 }
 
 button {
@@ -142,6 +155,7 @@ button:hover {
 }
 
 .col-task {
+  flex-direction: column;
   padding: 0 10px;
 }
 
