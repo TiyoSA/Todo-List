@@ -8,7 +8,10 @@
     </form>
 
     <ul class="todo-table">
-      <li v-for="(todo, index) in todos" :key="index">
+      <li v-for="(todo, index) in todos" :key="index" :class="{ done: todo.done }">
+        <div class="col-checkbox">
+          <input type="checkbox" v-model="todo.done" />
+        </div>
         <div class="col-task">
           <span>{{ todo.text }}</span>
         </div>
