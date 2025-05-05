@@ -6,6 +6,14 @@
       <input v-model="newTodo" placeholder="Tambah kegiatan..." />
       <button type="submit">Tambah</button>
     </form>
+
+    <ul class="todo-table">
+      <li v-for="(todo, index) in todos" :key="index">
+        <div class="col-task">
+          <span>{{ todo.text }}</span>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
