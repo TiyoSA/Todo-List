@@ -7,8 +7,15 @@
       <button type="submit">Tambah</button>
     </form>
 
+    <div class="filter">
+      <label>
+        <input type="checkbox" v-model="filterIncomplete" />
+        Tampilkan yang belum selesai
+      </label>
+    </div>
+
     <ul class="todo-table">
-      <li v-for="(todo, index) in todos" :key="index" :class="{ done: todo.done }">
+      <li v-for="(todo, index) in filteredTodos" :key="index" :class="{ done: todo.done }">
         <div class="col-checkbox">
           <input type="checkbox" v-model="todo.done" />
         </div>
@@ -21,10 +28,11 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const newTodo = ref('')
 const todos = ref([])
+const filterIncomplete = ref(false)
 
 function addTodo() {
   if (newTodo.value.trim() !== '') {
@@ -32,4 +40,10 @@ function addTodo() {
     newTodo.value = ''
   }
 }
+
+const filteredTodos = computed(() => {
+  return filterIncomplete.value
+    ? todos.value.filter(todo => !todo.done)
+    : todos.value
+})
 </script>
