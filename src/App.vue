@@ -54,3 +54,117 @@ const filteredTodos = computed(() => {
     : todos.value
 })
 </script>
+
+<style scoped>
+body {
+  margin: 0;
+  background-color: #121212;
+  color: #f1f1f1;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.app {
+  background-color: #1e1e1e;
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4dd0e1;
+}
+
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: white;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  background-color: #4dd0e1;
+  color: #1e1e1e;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #26c6da;
+}
+
+.filter {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.todo-table {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-table li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #2b2b2b;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.todo-table li.done .col-task span {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.col-checkbox,
+.col-task,
+.col-action {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.col-task {
+  padding: 0 10px;
+}
+
+.col-task span {
+  word-break: break-word;
+}
+
+.col-action {
+  justify-content: flex-end;
+}
+
+.todo-table button {
+  background-color: #ff5252;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.todo-table button:hover {
+  background-color: #ff1744;
+}
+</style>
