@@ -22,6 +22,9 @@
         <div class="col-task">
           <span>{{ todo.text }}</span>
         </div>
+        <div class="col-action">
+          <button @click="removeTodo(index)">Batal</button>
+        </div>
       </li>
     </ul>
   </div>
@@ -39,6 +42,10 @@ function addTodo() {
     todos.value.push({ text: newTodo.value, done: false })
     newTodo.value = ''
   }
+}
+
+function removeTodo(index) {
+  todos.value.splice(index, 1)
 }
 
 const filteredTodos = computed(() => {
